@@ -7,6 +7,10 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
         .image-grid {
             display: flex;
             flex-wrap: wrap;
@@ -40,7 +44,13 @@
 </head>
 <body>
     <h1>Project 1</h1>
-    <p>This is the page for Project 1.</p>
+    
+    <!-- Project Description -->
+    <div class="description">
+        <p>In this project, I take a few digitized Prokudin-Gorskii glass plate images and used image processing techniques to automatically produce a color image from them. In order to do this, I first divide the given image into three equal parts. Then for small images, I search over a window of [-15,15] pixels and then use the <code>structural_similarity</code> function from skimage to see how well the images align to find the best alignment between the blue and red, and blue and green plates.</p>
+        <p>However, this is time-consuming for large images, leading me to implement an image pyramid. In this algorithm, I scale the image down by a factor of 2 and then run my search algorithm over the [-15,15] pixel range. After this, I scale the best displacement I found by 2 and then search in a [-2, 2] pixel range around it. I keep recursively doing this until I reach the original image resolution to find the optimal alignment.</p>
+        <p>I ran into some problems on the Emir image where the cropping I was doing before processing the image interfered with the <code>np.roll</code> algorithm, leading the alignment to be off. Thus, I reduced the amount I was cropping the images to 5% in order to avoid this. My algorithm seemed to do well on all the images I processed, except for a few artifacts which were unavoidable, such as if someone moved in an image.</p>
+    </div>
 
     <!-- Image Grid -->
     <div class="image-grid">
@@ -146,9 +156,6 @@
             <p class="caption">train_fixed.png</p>
         </div>
     </div>
-
-    <!-- Label at the bottom -->
-    <p class="robot-label">fuck ass robot</p>
     
 </body>
 </html>

@@ -7,20 +7,34 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%;
+        }
         img {
             display: block;
-            margin-bottom: 5px;
-            max-width: 50%; /* Images are now 50% of the container's width */
+            width: 100%;
             height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         .caption {
-            margin-bottom: 20px;
-            font-style: italic;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
         }
         .robot-label {
             margin-top: 50px;
             font-size: 20px;
             color: red;
+            text-align: center;
         }
     </style>
 </head>
@@ -28,57 +42,110 @@
     <h1>Project 1</h1>
     <p>This is the page for Project 1.</p>
 
-    <!-- Displaying all images with names as captions -->
-    <img src="./media/V_Malorossii_fixed.png" alt="V Malorossii">
-    <p class="caption">V_Malorossii_fixed.png</p>
+    <!-- Image Grid -->
+    <div class="image-grid">
+        <!-- Image 1 -->
+        <div class="image-item">
+            <img src="./media/V_Malorossii_fixed.png" alt="V Malorossii">
+            <p class="caption">V_Malorossii_fixed.png</p>
+        </div>
 
-    <img src="./media/cathedral_fixed.png" alt="Cathedral">
-    <p class="caption">cathedral_fixed.png</p>
+        <!-- Image 2 -->
+        <div class="image-item">
+            <img src="./media/cathedral_fixed.png" alt="Cathedral">
+            <p class="caption">cathedral_fixed.png</p>
+        </div>
 
-    <img src="./media/church_fixed.png" alt="Church">
-    <p class="caption">church_fixed.png</p>
+        <!-- Image 3 -->
+        <div class="image-item">
+            <img src="./media/church_fixed.png" alt="Church">
+            <p class="caption">church_fixed.png</p>
+        </div>
 
-    <img src="./media/emir_fixed.png" alt="Emir">
-    <p class="caption">emir_fixed.png</p>
+        <!-- Image 4 -->
+        <div class="image-item">
+            <img src="./media/emir_fixed.png" alt="Emir">
+            <p class="caption">emir_fixed.png</p>
+        </div>
 
-    <img src="./media/harvesters_fixed.png" alt="Harvesters">
-    <p class="caption">harvesters_fixed.png</p>
+        <!-- Image 5 -->
+        <div class="image-item">
+            <img src="./media/harvesters_fixed.png" alt="Harvesters">
+            <p class="caption">harvesters_fixed.png</p>
+        </div>
 
-    <img src="./media/icon_fixed.png" alt="Icon">
-    <p class="caption">icon_fixed.png</p>
+        <!-- Image 6 -->
+        <div class="image-item">
+            <img src="./media/icon_fixed.png" alt="Icon">
+            <p class="caption">icon_fixed.png</p>
+        </div>
 
-    <img src="./media/lady_fixed.png" alt="Lady">
-    <p class="caption">lady_fixed.png</p>
+        <!-- Image 7 -->
+        <div class="image-item">
+            <img src="./media/lady_fixed.png" alt="Lady">
+            <p class="caption">lady_fixed.png</p>
+        </div>
 
-    <img src="./media/man_camel_fixed.png" alt="Man on Camel">
-    <p class="caption">man_camel_fixed.png</p>
+        <!-- Image 8 -->
+        <div class="image-item">
+            <img src="./media/man_camel_fixed.png" alt="Man on Camel">
+            <p class="caption">man_camel_fixed.png</p>
+        </div>
 
-    <img src="./media/melons_fixed.png" alt="Melons">
-    <p class="caption">melons_fixed.png</p>
+        <!-- Image 9 -->
+        <div class="image-item">
+            <img src="./media/melons_fixed.png" alt="Melons">
+            <p class="caption">melons_fixed.png</p>
+        </div>
 
-    <img src="./media/monastery_fixed.png" alt="Monastery">
-    <p class="caption">monastery_fixed.png</p>
+        <!-- Image 10 -->
+        <div class="image-item">
+            <img src="./media/monastery_fixed.png" alt="Monastery">
+            <p class="caption">monastery_fixed.png</p>
+        </div>
 
-    <img src="./media/old_mosque_fixed.png" alt="Old Mosque">
-    <p class="caption">old_mosque_fixed.png</p>
+        <!-- Image 11 -->
+        <div class="image-item">
+            <img src="./media/old_mosque_fixed.png" alt="Old Mosque">
+            <p class="caption">old_mosque_fixed.png</p>
+        </div>
 
-    <img src="./media/onion_church_fixed.png" alt="Onion Church">
-    <p class="caption">onion_church_fixed.png</p>
+        <!-- Image 12 -->
+        <div class="image-item">
+            <img src="./media/onion_church_fixed.png" alt="Onion Church">
+            <p class="caption">onion_church_fixed.png</p>
+        </div>
 
-    <img src="./media/sculpture_fixed.png" alt="Sculpture">
-    <p class="caption">sculpture_fixed.png</p>
+        <!-- Image 13 -->
+        <div class="image-item">
+            <img src="./media/sculpture_fixed.png" alt="Sculpture">
+            <p class="caption">sculpture_fixed.png</p>
+        </div>
 
-    <img src="./media/self_portrait_fixed.png" alt="Self Portrait">
-    <p class="caption">self_portrait_fixed.png</p>
+        <!-- Image 14 -->
+        <div class="image-item">
+            <img src="./media/self_portrait_fixed.png" alt="Self Portrait">
+            <p class="caption">self_portrait_fixed.png</p>
+        </div>
 
-    <img src="./media/three_generations_fixed.png" alt="Three Generations">
-    <p class="caption">three_generations_fixed.png</p>
+        <!-- Image 15 -->
+        <div class="image-item">
+            <img src="./media/three_generations_fixed.png" alt="Three Generations">
+            <p class="caption">three_generations_fixed.png</p>
+        </div>
 
-    <img src="./media/tobolsk_fixed.png" alt="Tobolsk">
-    <p class="caption">tobolsk_fixed.png</p>
+        <!-- Image 16 -->
+        <div class="image-item">
+            <img src="./media/tobolsk_fixed.png" alt="Tobolsk">
+            <p class="caption">tobolsk_fixed.png</p>
+        </div>
 
-    <img src="./media/train_fixed.png" alt="Train">
-    <p class="caption">train_fixed.png</p>
+        <!-- Image 17 -->
+        <div class="image-item">
+            <img src="./media/train_fixed.png" alt="Train">
+            <p class="caption">train_fixed.png</p>
+        </div>
+    </div>
 
     <!-- Label at the bottom -->
     <p class="robot-label">fuck ass robot</p>

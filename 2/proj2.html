@@ -69,7 +69,11 @@
     <div class="section-title">Part 1: Fun with Filters</div>
 
     <div class="description">
-        <p>This section explores filters and how we can manipulate images with different frequency information. We apply different filtering techniques to highlight image features and create new visual effects.</p>
+        <p>This section explores filters and how we can manipulate images utilizing frequency. 
+            In regards to the gradient magnitude computations, I first convolve the image with the filter [1, -1] to get the x component,
+            Gx, of the gradient. Then I convolve with [[1], [-1]] to get the y component of the gradient, Gy. Afterwards, I compute
+            the square root of the sum of squares of the x and y components of the gradient to get the gradient magnitude, 
+            G<sub>m</sub = sqrt(G<sub>x</sub><sup>2</sup> + G<sub>y</sub><sup>2</sup>).</p>
     </div>
 
     <!-- Part 1.1: Finite Difference Operator -->
@@ -79,22 +83,25 @@
             <img src="./media/cameraog.png" alt="Original Image">
             <p class="caption">Original Image</p>
         </div>
-        <div class="image-item">
+        <div class="large-image-item">
             <img src="./media/camera1.png" alt="Finite Difference Result">
-            <p class="caption">Finite Difference Result</p>
+            <p class="caption"></p>
         </div>
     </div>
     
     <!-- Part 1.2: Derivative of Gaussian (DoG) Filter -->
     <div class="section-title">Part 1.2: Derivative of Gaussian (DoG) Filter</div>
     <div class="image-stack">
-        <div class="image-item">
+        <div class="large-image-item">
             <img src="./media/camera2.png" alt="Finite Difference Result">
-            <p class="caption">Finite Difference Result</p>
+            <p class="caption">Gaussian Filter Result: The edge image has less artifacts from the grass and the edge are more clearly extracted. 
+                The edges that were detected from the grass no longer show up after we convolve with the Guassian filter. The edges
+            are cleaner and there is less noise.</p>
         </div>
-        <div class="image-item">
+        <div class="large-image-item">
             <img src="./media/camera3.png" alt="Finite Difference Result">
-            <p class="caption">Finite Difference Result</p>
+            <p class="caption">Derivative of Guassian Filter Result: This is the same result as the previous images showing that 
+            can do the same thing with a single convolution by creating a derivative of gaussian filters.</p>
         </div>
     </div>
 
@@ -106,23 +113,25 @@
     <div class="image-grid">
         <div class="image-item">
             <img src="./media/sharp1.png" alt="Original Image">
-            <p class="caption">Original Image</p>
+            <p class="caption"></p>
         </div>
         <div class="image-item">
             <img src="./media/sharp2.png" alt="Sharpened Image">
-            <p class="caption">Sharpened Image</p>
+            <p class="caption"></p>
         </div>
         <div class="image-item">
             <img src="./media/sharp3.png" alt="Sharpened Image">
-            <p class="caption">Sharpened Image</p>
+            <p class="caption">We can see that blurring a sharp image and then sharpening it gives back the original image.
+            However, there are some artifacts, but the edges are improved from the blurred image.</p>
         </div>
         <div class="image-item">
             <img src="./media/sharp4.png" alt="Sharpened Image">
-            <p class="caption">Sharpened Image</p>
+            <p class="caption"></p>
         </div>
         <div class="image-item">
             <img src="./media/sharp5.png" alt="Sharpened Image">
-            <p class="caption">Sharpened Image</p>
+            <p class="caption">This also shows that blurring a sharp image and then resharpening it does a good job of
+            restoring the quality of the image.</p>
         </div>
     </div>
 

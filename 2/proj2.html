@@ -74,7 +74,7 @@
             Gx, of the gradient. Then I convolve with [[1], [-1]] to get the y component of the gradient, Gy. Afterwards, I compute
             the square root of the sum of squares of the x and y components of the gradient to get the gradient magnitude, 
             sqrt( G<sub>x</sub><sup>2</sup> + G<sub>y</sub><sup>2</sup> ). The most important thing I learned from this project
-            is the importance of reading documentation as some plotting librarys treat image channels in a different order.
+            is the importance of reading documentation as some plotting libraries treat image channels in a different order.
             Additionally, I also realized the importance of having organized and modular code.</p>
     </div>
 
@@ -93,6 +93,10 @@
     
     <!-- Part 1.2: Derivative of Gaussian (DoG) Filter -->
     <div class="section-title">Part 1.2: Derivative of Gaussian (DoG) Filter</div>
+    <div class="description">
+        <p>For this section, I create a smoothing filter from the Gaussian Filter which I made by taking the dot product
+            with itself from a 1D Gaussian filter. I also convolve the gaussian with Dx and Dy and it gives the same result.</p>
+    </div>
     <div class="image-stack">
         <div class="large-image-item">
             <img src="./media/camera2.png" alt="Finite Difference Result">
@@ -112,6 +116,11 @@
 
     <!-- Part 2.1: Image "Sharpening" -->
     <div class="section-title">Part 2.1: Image "Sharpening"</div>
+    <div class="description">
+        <p>For this section, I low pass filter the image. Then I subtract that low frequency image from the original image
+            to get the high frequency components of the image. Then I add a small portion of the high frequency image
+            back to the original since images look sharper if it has stronger high frequencies.</p>
+    </div>
     <div class="image-grid">
         <div class="image-item">
             <img src="./media/sharp1.png" alt="Original Image">
@@ -139,6 +148,10 @@
 
     <!-- Part 2.2: Hybrid Images -->
     <div class="section-title">Part 2.2: Hybrid Images</div>
+    <div class="description">
+        <p>In order to create hybrid images, I low pass one image and high pass filter another image (by subtracting the 
+            low frequencies) and then combine the images. I set thresholds appropriately in order to get the desired effect.</p>
+    </div>
     <!-- Image Pair: Hybrid 1 and Hybrid 12 -->
     <div class="image-pair">
         <div class="image-item">
@@ -191,6 +204,11 @@
 
     <!-- Part 2.3: Gaussian and Laplacian Stacks -->
     <div class="section-title">Part 2.3: Gaussian and Laplacian Stacks</div>
+    <div class="description">
+        <p>In order to make Gaussian stacks I repeately apply Gaussian blur to the previous image in the stack. 
+            To make the Laplacian stack I take the ith image in the Gaussian stack and subtract the i+1th image
+            from the Gaussian stack from it.</p>
+    </div>
     <div class="image-stack">
         <div class="large-image-item">
             <img src="./media/blend1.png" alt="Gaussian Stack">
@@ -204,6 +222,13 @@
 
     <!-- Part 2.4: Multiresolution Blending (Oraple) -->
     <div class="section-title">Part 2.4: Multiresolution Blending (The Oraple!)</div>
+    <div class="description">
+        <p>In order to blend images, I make a Laplacian stack for both images. Then I create an appropriate mask that defines
+            the blending boundary. Then I apply Gaussian blur to the mask and create a Gaussian stack. Then I use the algorithm
+            from the 1983 paper. This algorithm iterates through the stacks and element wise multiples the mask with the first
+            images Laplacian stack image and then adds that to (1 - mask) element wise multipled by the second images Laplacian
+            stack. Then, we sum over all the stacks to get the final image.</p>
+    </div>
     <div class="image-stack">
         <div class="large-image-item">
             <img src="./media/apple.png" alt="Oraple Blending">

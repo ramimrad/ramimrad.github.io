@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 2: Fun with Filters and Frequencies!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project 2: Fun with Filters and Frequencies!</h1>
+
+    <!-- Part 1: Fun with Filters -->
+    <div class="section-title">Part 1: Fun with Filters</div>
+
+    <div class="description">
+        <p>This section explores filters and how we can manipulate images with different frequency information. We apply different filtering techniques to highlight image features and create new visual effects.</p>
+    </div>
+
+    <!-- Part 1.1: Finite Difference Operator -->
+    <div class="section-title">Part 1.1: Finite Difference Operator</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/finite_diff_original.png" alt="Original Image">
+            <p class="caption">Original Image</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/finite_diff_result.png" alt="Finite Difference Result">
+            <p class="caption">Finite Difference Result</p>
+        </div>
+    </div>
+
+    <!-- Part 1.2: Derivative of Gaussian (DoG) Filter -->
+    <div class="section-title">Part 1.2: Derivative of Gaussian (DoG) Filter</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/dog_original.png" alt="Original Image">
+            <p class="caption">Original Image</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/dog_result.png" alt="DoG Filter Result">
+            <p class="caption">DoG Filter Result</p>
+        </div>
+    </div>
+
+    <!-- Part 2: Fun with Frequencies -->
+    <div class="section-title">Part 2: Fun with Frequencies!</div>
+
+    <!-- Part 2.1: Image "Sharpening" -->
+    <div class="section-title">Part 2.1: Image "Sharpening"</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/sharpen_original.png" alt="Original Image">
+            <p class="caption">Original Image</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/sharpened.png" alt="Sharpened Image">
+            <p class="caption">Sharpened Image</p>
+        </div>
+    </div>
+
+    <!-- Part 2.2: Hybrid Images -->
+    <div class="section-title">Part 2.2: Hybrid Images</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/hybrid_1.png" alt="Hybrid Image 1">
+            <p class="caption">Hybrid Image 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/hybrid_2.png" alt="Hybrid Image 2">
+            <p class="caption">Hybrid Image 2</p>
+        </div>
+    </div>
+
+    <!-- Part 2.3: Gaussian and Laplacian Stacks -->
+    <div class="section-title">Part 2.3: Gaussian and Laplacian Stacks</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/gaussian_stack.png" alt="Gaussian Stack">
+            <p class="caption">Gaussian Stack</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/laplacian_stack.png" alt="Laplacian Stack">
+            <p class="caption">Laplacian Stack</p>
+        </div>
+    </div>
+
+    <!-- Part 2.4: Multiresolution Blending (Oraple) -->
+    <div class="section-title">Part 2.4: Multiresolution Blending (The Oraple!)</div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/orapple_blending.png" alt="Oraple Blending">
+            <p class="caption">Oraple Blending</p>
+        </div>
+    </div>
+
+</body>
+</html>

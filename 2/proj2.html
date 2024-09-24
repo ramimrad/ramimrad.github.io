@@ -10,12 +10,13 @@
         .description {
             margin-bottom: 40px;
             line-height: 1.6;
+            text-align: center;
         }
         .image-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: space-evenly;
+            justify-content: center; /* Center images horizontally */
         }
         .image-item {
             text-align: center;
@@ -38,9 +39,12 @@
             font-size: 24px;
             margin-top: 40px;
             color: #333;
+            text-align: center;
         }
         .image-stack {
             display: block; /* Stack images vertically */
+            max-width: 600px; /* Set max width to limit size */
+            margin: 0 auto; /* Center the image stack */
         }
         .image-stack .image-item {
             text-align: center;

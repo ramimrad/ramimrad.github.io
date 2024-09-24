@@ -50,6 +50,12 @@
             text-align: center;
             margin-bottom: 20px; /* Adds space between stacked images */
         }
+        .image-pair {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -93,7 +99,7 @@
 
     <!-- Part 2.1: Image "Sharpening" -->
     <div class="section-title">Part 2.1: Image "Sharpening"</div>
-    <div class="image-grid">
+    <div class="image-stack">
         <div class="image-item">
             <img src="./media/sharp1.png" alt="Original Image">
             <p class="caption">Original Image</p>
@@ -118,7 +124,8 @@
 
     <!-- Part 2.2: Hybrid Images -->
     <div class="section-title">Part 2.2: Hybrid Images</div>
-    <div class="image-grid">
+    <!-- Image Pair: Hybrid 1 and Hybrid 12 -->
+    <div class="image-pair">
         <div class="image-item">
             <img src="./media/hybrid1.png" alt="Hybrid Image 1">
             <p class="caption">Hybrid Image 1</p>
@@ -127,6 +134,10 @@
             <img src="./media/hybrid12.png" alt="Hybrid Image 1">
             <p class="caption">Hybrid Image 1</p>
         </div>
+    </div>
+
+    <!-- Image Pair: Hybrid 3 and Hybrid 32 -->
+    <div class="image-pair">
         <div class="image-item">
             <img src="./media/hybrid3.png" alt="Hybrid Image 2">
             <p class="caption">Hybrid Image 2</p>
@@ -135,6 +146,10 @@
             <img src="./media/hybrid32.png" alt="Hybrid Image 2">
             <p class="caption">Hybrid Image 2</p>
         </div>
+    </div>
+
+    <!-- Image Pair: Hybrid 4 and Hybrid 42 -->
+    <div class="image-pair">
         <div class="image-item">
             <img src="./media/hybrid4.png" alt="Hybrid Image 2">
             <p class="caption">Hybrid Image 2</p>
@@ -143,6 +158,10 @@
             <img src="./media/hybrid42.png" alt="Hybrid Image 2">
             <p class="caption">Hybrid Image 2</p>
         </div>
+    </div>
+
+    <!-- Image Pair: Hybrid 2 and Hybrid 22 -->
+    <div class="image-pair">
         <div class="image-item">
             <img src="./media/hybrid2.png" alt="Hybrid Image 2">
             <p class="caption">Hybrid Image 2</p>

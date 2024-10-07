@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3: Face Morphing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%; 
+        }
+        .large-image-item {
+            text-align: center;
+            width: 90%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            color: #333;
+            text-align: center;
+        }
+        .image-stack {
+            display: block;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .image-stack .image-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-pair {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project 3: Face Morphing</h1>
 
+    <!-- Part 1: Defining Correspondences -->
+    <div class="section-title">Part 1: Defining Correspondences</div>
+    <div class="description">
+        <p>In this section, we manually select corresponding points between two faces. These points define key facial features (e.g., eyes, nose, mouth), 
+            allowing us to establish a mapping for morphing. The points serve as the basis for computing a triangulation mesh, 
+            which is then used to warp the face geometrically.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/1_tr1_a.png" alt="Points on Face 1">
+            <p class="caption">Points on Face 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/2_tri_b.png" alt="Points on Face 2">
+            <p class="caption">Points on Face 2</p>
+        </div>
+    </div>
+    <div class="image-grid">
+          <div class="image-item">
+              <img src="./media/chuk_khang_a.png" alt="Points on Face 1">
+              <p class="caption">Points on Face 1</p>
+          </div>
+          <div class="image-item">
+              <img src="./media/chuk_khang_c.png" alt="Points on Face 2">
+              <p class="caption">Points on Face 2</p>
+          </div>
+      </div>
+
+    <!-- Part 2: Computing the "Mid-way Face" -->
+    <div class="section-title">Part 2: Computing the "Mid-way Face"</div>
+    <div class="description">
+        <p>Using the points from Part 1, we compute the average geometry between two faces and morph both faces into this mid-way shape. 
+            The texture (color) is also blended evenly to create a seamless result.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/3_morph_a.png" alt="Points on Face 1">
+            <p class="caption">Points on Face 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/4_morph_b.png" alt="Points on Face 2">
+            <p class="caption">Points on Face 2</p>
+        </div>
+        <div class="image-item">
+              <img src="./media/5_morph_c.png" alt="Points on Face 2">
+              <p class="caption">Points on Face 2</p>
+          </div>
+    </div>
+    </div>
+      <div class="image-grid">
+          <div class="image-item">
+              <img src="./media/khang-2.png" alt="Points on Face 1">
+              <p class="caption">Points on Face 1</p>
+          </div>
+          <div class="image-item">
+              <img src="./media/chuk_khang_b.png" alt="Points on Face 2">
+              <p class="caption">Points on Face 2</p>
+          </div>
+          <div class="image-item">
+                <img src="./media/chuk.png" alt="Points on Face 2">
+                <p class="caption">Points on Face 2</p>
+            </div>
+      </div>
+
+    <!-- Part 3: The Morph Sequence -->
+    <div class="section-title">Part 3: The Morph Sequence</div>
+    <div class="description">
+        <p>In this section, we generate a sequence of frames that gradually morph one face into the other. The transition is controlled by 
+            linearly interpolating both the geometry and the color, creating a smooth animation between the two faces.</p>
+    </div>
+    <div class="image-stack">
+        <div class="large-image-item">
+            <img src="./media/animation.gif" alt="Morph Sequence">
+            <p class="caption">Morph Sequence between Face 1 and Face 2</p>
+        </div>
+    </div>
+    <div class="image-stack">
+        <div class="large-image-item">
+            <img src="./media/khang-rat-animation-3.gif" alt="Morph Sequence">
+            <p class="caption">Morph Sequence between Face 1 and Face 2</p>
+        </div>
+    </div>
+
+    <!-- Part 4: The "Mean Face" of a Population -->
+    <div class="section-title">Part 4: The "Mean Face" of a Population</div>
+    <div class="description">
+        <p>Here, we compute the average face of a population by morphing several faces into the mean geometry of the group. 
+            This creates a representation of the "average face" for the given population.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/average_pop.png" alt="Mean Face">
+            <p class="caption">The "Mean Face" of the Population</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/my_face_average.png" alt="Individual Morph into Mean Face">
+            <p class="caption">An Individual Face Morphed into the Mean Face</p>
+        </div>
+    </div>
+
+    <!-- Part 5: Caricatures: Extrapolating from the Mean -->
+    <div class="section-title">Part 5: Caricatures: Extrapolating from the Mean</div>
+    <div class="description">
+        <p>In this section, we create caricatures by extrapolating from the mean face. By exaggerating the differences between 
+            an individual's face and the mean face, we generate a caricature effect, where unique facial features become more pronounced.</p>
+    </div>
+    <div class="image-stack">
+        <div class="large-image-item">
+            <img src="./media/neth.jpeg" alt="Caricature">
+            <p class="caption">Caricature by Extrapolating from the Mean Face</p>
+        </div>
+    </div>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/me_dutch.png" alt="Mean Face">
+            <p class="caption">The "Mean Face" of the Population</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/dutch_me.png" alt="Individual Morph into Mean Face">
+            <p class="caption">An Individual Face Morphed into the Mean Face</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/me_dutch_both.png" alt="Individual Morph into Mean Face">
+            <p class="caption">An Individual Face Morphed into the Mean Face</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -108,30 +108,30 @@
     <div class="image-grid">
         <div class="image-item">
             <img src="./media/3_morph_a.png" alt="Points on Face 1">
-            <p class="caption">Points on Face 1</p>
+            <p class="caption">Face 1</p>
         </div>
         <div class="image-item">
             <img src="./media/4_morph_b.png" alt="Points on Face 2">
-            <p class="caption">Points on Face 2</p>
+            <p class="caption">Midway Face</p>
         </div>
         <div class="image-item">
               <img src="./media/5_morph_c.png" alt="Points on Face 2">
-              <p class="caption">Points on Face 2</p>
+              <p class="caption">Face 2</p>
           </div>
     </div>
     </div>
       <div class="image-grid">
           <div class="image-item">
               <img src="./media/khang-2.png" alt="Points on Face 1">
-              <p class="caption">Points on Face 1</p>
+              <p class="caption">T&F: Khang</p>
           </div>
           <div class="image-item">
               <img src="./media/chuk_khang_b.png" alt="Points on Face 2">
-              <p class="caption">Points on Face 2</p>
+              <p class="caption">T&F: Khang+Chuk</p>
           </div>
           <div class="image-item">
                 <img src="./media/chuk.png" alt="Points on Face 2">
-                <p class="caption">Points on Face 2</p>
+                <p class="caption">T&F: Chuk</p>
             </div>
       </div>
 
@@ -146,14 +146,20 @@
     </div>
     <div class="image-stack">
         <div class="large-image-item">
-            <img src="./media/animation.gif" alt="Morph Sequence">
-            <p class="caption">Morph Sequence between Face 1 and Face 2</p>
+            <img src="./media/animation-looped.gif" alt="Morph Sequence">
+            <p class="caption">Morph of Face 1 and 2</p>
         </div>
     </div>
     <div class="image-stack">
         <div class="large-image-item">
-            <img src="./media/khang-rat-animation-3.gif" alt="Morph Sequence">
-            <p class="caption">Morph Sequence between Face 1 and Face 2</p>
+            <img src="./media/lamar-von-animation-looped.gif" alt="Morph Sequence">
+            <p class="caption">Morph Sequence between Khang and a rat</p>
+        </div>
+    </div>
+    <div class="image-stack">
+        <div class="large-image-item">
+            <img src="./media/khang-rat-animation-looped.gif" alt="Morph Sequence">
+            <p class="caption">Morph Sequence between Khang and a rat</p>
         </div>
     </div>
 
@@ -174,15 +180,30 @@
         </div>
         <div class="image-item">
             <img src="./media/my_face_average.png" alt="Individual Morph into Mean Face">
-            <p class="caption">My Face Morphed into the Mean Face</p>
+            <p class="caption">My Face Morphed into the Mean Face and Mean Face Morphed into me.</p>
         </div>
     </div>
 
     <!-- Part 5: Caricatures: Extrapolating from the Mean -->
     <div class="section-title">Part 5: Caricatures: Extrapolating from the Mean</div>
     <div class="description">
-        <p>In this section, we create caricatures by extrapolating from the mean face. By exaggerating the differences between 
-            an individual's face and the mean face, we generate a caricature effect, where unique facial features become more pronounced.</p>
+        <p>In this section, I create caricatures by extrapolating from the mean face. In order to do this, I utilized the same
+            morphing function that I had, but I set the warp_factor = -0.5 to get more of my face's geometry and 1.5 to get more of
+            the average face's geometry.</p>
+    </div>
+    <div class="image-stack">
+        <div class="large-image-item">
+            <img src="./media/extrapolate.png" alt="Caricature">
+            <p class="caption">Caricature by Extrapolating from the Mean Face</p>
+        </div>
+    </div>
+
+    <!-- Part 6: Bells and Whistles: Change Gender -->
+    <div class="section-title">Part 6: Bells and Whistles: Changing Gender</div>
+    <div class="description">
+        <p>In this section, I attempt to change the gender of my face by utilizing an image of the average Dutch woman. I define correspondances
+            between this image and my image and then warp my face's geometry into the geometry of the average Dutch woman. I also warp
+            the geometry of the average Dutch woman into my geomtry as well, and then morph both the shape and appearance.</p>
     </div>
     <div class="image-stack">
         <div class="large-image-item">

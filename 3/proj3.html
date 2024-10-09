@@ -70,9 +70,11 @@
     <!-- Part 1: Defining Correspondences -->
     <div class="section-title">Part 1: Defining Correspondences</div>
     <div class="description">
-        <p>In this section, we manually select corresponding points between two faces. These points define key facial features (e.g., eyes, nose, mouth), 
-            allowing us to establish a mapping for morphing. The points serve as the basis for computing a triangulation mesh, 
-            which is then used to warp the face geometrically.</p>
+        <p>In this section, I select corresponding points between two faces. These points define key facial features such as the outline of eyes, 
+            nose, mouth, etc. allowing us to establish a triangulation for morphing. In order do this, I used the tool linked on the project spec.
+            The points shown below are what serve as a basis for computing a triangulation mesh using , I then use the triangulated
+            correspondance points to comute a warp which is carried out in the next part.  
+            the face geometrically.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -98,8 +100,10 @@
     <!-- Part 2: Computing the "Mid-way Face" -->
     <div class="section-title">Part 2: Computing the "Mid-way Face"</div>
     <div class="description">
-        <p>Using the points from Part 1, we compute the average geometry between two faces and morph both faces into this mid-way shape. 
-            The texture (color) is also blended evenly to create a seamless result.</p>
+        <p>In this section, I use the correspondance points from Part 1, to compute the average geometry between two faces by averaging their
+            correspondances I then compute the affine transformation matrix to go from the triangulated geometry of the 
+            mid-way face to the original images. These matricies are then used to morph each of the faces into this mid-way shape. 
+            Then I carry out interpolation in order to set the color of the pixels in the images..</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -134,8 +138,11 @@
     <!-- Part 3: The Morph Sequence -->
     <div class="section-title">Part 3: The Morph Sequence</div>
     <div class="description">
-        <p>In this section, we generate a sequence of frames that gradually morph one face into the other. The transition is controlled by 
-            linearly interpolating both the geometry and the color, creating a smooth animation between the two faces.</p>
+        <p>In this section, I generate a sequence of frames that gradually morphs one face into the other. The transition is controlled by 
+            linearly warping the geometry and cross dissolving the colors of the pixels, creating a smooth animation between the two faces.
+            To accomplish this, I added a warp_factor and dissolve_factor parameter to my function that generates the mid-way face. Then,
+            I created a range of these values from [0, 1] with 45 steps in order to create a transition with 45 frames. I then compiled all
+            of these 45 frames into a gif to display the morphing sequenece. </p>
     </div>
     <div class="image-stack">
         <div class="large-image-item">
@@ -153,8 +160,12 @@
     <!-- Part 4: The "Mean Face" of a Population -->
     <div class="section-title">Part 4: The "Mean Face" of a Population</div>
     <div class="description">
-        <p>Here, we compute the average face of a population by morphing several faces into the mean geometry of the group. 
-            This creates a representation of the "average face" for the given population.</p>
+        <p>In this section, I compute the average face of a population retreived from the dataset linked on the project spec.
+            To accomplish this, I first average all of the correspondance points of all the images in the dataset in order 
+            to get the average shape. I then create a triangulation of this shape and warp all of the faces in the dataset 
+            to this geometry. I average all of the outputs at the end to get the "mean face" of the population at the end.
+            by morphing several faces into the mean geometry of the group. I then define new correspondances on this mean face
+            and my face in order to warp my face into that of the average of the population.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -163,7 +174,7 @@
         </div>
         <div class="image-item">
             <img src="./media/my_face_average.png" alt="Individual Morph into Mean Face">
-            <p class="caption">An Individual Face Morphed into the Mean Face</p>
+            <p class="caption">My Face Morphed into the Mean Face</p>
         </div>
     </div>
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 4: Image Mosaicing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%; 
+        }
+        .large-image-item {
+            text-align: center;
+            width: 90%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            color: #333;
+            text-align: center;
+        }
+        .image-stack {
+            display: block;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .image-stack .image-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project 4: Image Mosaicing</h1>
+
+    <!-- Part 1: Shooting and Digitizing Pictures -->
+    <div class="section-title">Part 1: Shooting and Digitizing Pictures</div>
+    <div class="description">
+        <p>In this section, I captured and digitized photographs with overlapping fields of view to ensure effective image mosaicing. 
+           The goal was to create a sequence of images with projective transformations by rotating the camera and fixing the center of projection.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/pic1.jpg" alt="Photograph 1">
+            <p class="caption">Photograph 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/pic2.jpg" alt="Photograph 2">
+            <p class="caption">Photograph 2</p>
+        </div>
+    </div>
+
+    <!-- Part 2: Recovering Homographies -->
+    <div class="section-title">Part 2: Recovering Homographies</div>
+    <div class="description">
+        <p>I computed homographies between image pairs using manually defined point correspondences and solved the linear system using least-squares to obtain the transformation matrix. The homographies allow precise warping between images.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/homography_demo.png" alt="Homography Example">
+            <p class="caption">Homography Recovery</p>
+        </div>
+    </div>
+
+    <!-- Part 3: Warping the Images -->
+    <div class="section-title">Part 3: Warping the Images</div>
+    <div class="description">
+        <p>Using the recovered homographies, I warped images to align with the reference image. I implemented forward and inverse warping techniques, ensuring proper resampling and handling of aliasing.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/warped1.png" alt="Warped Image 1">
+            <p class="caption">Warped Image 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/warped2.png" alt="Warped Image 2">
+            <p class="caption">Warped Image 2</p>
+        </div>
+    </div>
+
+    <!-- Part 4: Blending Images into a Mosaic -->
+    <div class="section-title">Part 4: Blending Images into a Mosaic</div>
+    <div class="description">
+        <p>In this section, I blended warped images into a mosaic using alpha blending techniques and weighted averaging. Three examples of mosaics created from different image sets are shown below.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/mosaic1.png" alt="Mosaic 1">
+            <p class="caption">Mosaic 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/mosaic2.png" alt="Mosaic 2">
+            <p class="caption">Mosaic 2</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/mosaic3.png" alt="Mosaic 3">
+            <p class="caption">Mosaic 3</p>
+        </div>
+    </div>
+
+    <!-- Optional: Bells and Whistles -->
+    <div class="section-title">Bells and Whistles: Advanced Techniques</div>
+    <div class="description">
+        <p>For added challenge, I implemented advanced techniques like Laplacian pyramid blending and rectification for perspective correction. These enhancements refined the quality and artistic aspects of the mosaics.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/advanced_blend.png" alt="Advanced Blending">
+            <p class="caption">Advanced Blending Example</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/rectification.png" alt="Image Rectification">
+            <p class="caption">Image Rectification Example</p>
+        </div>
+    </div>
+</body>
+</html>
+

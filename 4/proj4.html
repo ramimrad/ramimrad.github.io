@@ -125,7 +125,7 @@
     <div class="section-title">Part 3: Warping the Images</div>
     <div class="description">
         <p>Using the recovered homographies, I warped images to align with the reference image. I implemented forward and inverse warping techniques, ensuring proper 
-            interpolation to creare the stiched mosaics. As a sanity check, I took pictures of posters that were at an angle
+            interpolation using scipy's map_coordinates to create the stiched mosaics. As a sanity check, I took pictures of posters that were at an angle
         in Haas Pavilion and then used the Warping to see if I can warp the poster onto a flat plane. This was done by setting 
         the correspondances of the first image to be the corners of the poster and the correspondances of the
             second image to be rectangular coordinates of the form: [0, 0; 0, d; d, d; d, 0].</p>

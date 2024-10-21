@@ -64,17 +64,30 @@
     <!-- Part 1: Shooting and Digitizing Pictures -->
     <div class="section-title">Part 1: Shooting and Digitizing Pictures</div>
     <div class="description">
-        <p>In this section, I captured photos with overlapping fields of view to ensure effective image mosaicing. 
-           The goal was to create a sequence of images with projective transformations by rotating the camera and fixing the center of projection.</p>
+        <p>In this project, I create mosaics from pictures I capture utilizing warping through homographies and blending. 
+            I captured few photos with overlapping fields of view to accomplish this. Below are a few pictures
+        I used for this project.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
             <img src="./media/mos_1.png" alt="Photograph 1">
-            <p class="caption">Example Photograph 1</p>
+            <p class="caption">Campus Photograph 1</p>
         </div>
         <div class="image-item">
             <img src="./media/mos_2.png" alt="Photograph 2">
-            <p class="caption">Example Photograph 2</p>
+            <p class="caption">Campus Photograph 2</p>
+        </div>
+    </div>
+
+    
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/kit_1.png" alt="Photograph 1">
+            <p class="caption">Kitchen Photograph 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/kit_2.png" alt="Photograph 2">
+            <p class="caption">Kitchen Photograph 2</p>
         </div>
     </div>
 
@@ -82,7 +95,8 @@
     <div class="section-title">Part 2: Recovering Homographies</div>
     <div class="description">
         <p>I computed homographies between image pairs using manually defined point correspondences and solved the linear system using least-squares to obtain the transformation matrix. 
-            The system of equations was of the form: [-x2, -y2, -1, 0, 0, 0, x1 * x2, x1 * y2, x1] and [0, 0, 0, -x2, -y2, -1, y1 * x2, y1 * y2, y1]. 
+            The system of equations was of the form: [-x2, -y2, -1, 0, 0, 0, x1 * x2, x1 * y2, x1] and [0, 0, 0, -x2, -y2, -1, y1 * x2, y1 * y2, y1] allowing
+            me to solve for the unkowns of the 3x3 homography matrix (with one entry being 1). 
             This system allows us to recover the homography matrix which allows precise warping between images.</p>
     </div>
     <div class="image-grid">
@@ -96,13 +110,25 @@
         </div>
     </div>
 
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/corrs1.png" alt="Homography Example">
+            <p class="caption">Homography for Kitchen Mosaic</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/corrs2.png" alt="Homography Example">
+            <p class="caption">Homography for Kitchen Mosaic</p>
+        </div>
+    </div>
+
     <!-- Part 3: Warping the Images -->
     <div class="section-title">Part 3: Warping the Images</div>
     <div class="description">
         <p>Using the recovered homographies, I warped images to align with the reference image. I implemented forward and inverse warping techniques, ensuring proper 
             interpolation to creare the stiched mosaics. As a sanity check, I took pictures of posters that were at an angle
         in Haas Pavilion and then used the Warping to see if I can warp the poster onto a flat plane. This was done by setting 
-        the correspondances of the second image to be rectangular coordinates.</p>
+        the correspondances of the first image to be the corners of the poster and the correspondances of the
+            second image to be rectangular coordinates of the form: [0, 0; 0, d; d, d; d, 0].</p>
     </div>
     <div class="image-grid">
         <div class="image-item">

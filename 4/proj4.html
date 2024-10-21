@@ -94,10 +94,11 @@
     <!-- Part 2: Recovering Homographies -->
     <div class="section-title">Part 2: Recovering Homographies</div>
     <div class="description">
-        <p>I computed homographies between image pairs using manually defined point correspondences and solved the linear system using least-squares to obtain the transformation matrix. 
+        <p>I computed homographies between image pairs using manually defined point correspondances and solved the linear system using least-squares to obtain the transformation matrix. 
             The system of equations was of the form: [-x2, -y2, -1, 0, 0, 0, x1 * x2, x1 * y2, x1] and [0, 0, 0, -x2, -y2, -1, y1 * x2, y1 * y2, y1] allowing
-            me to solve for the unkowns of the 3x3 homography matrix (with one entry being 1). 
-            This system allows us to recover the homography matrix which allows precise warping between images.</p>
+            me to solve for the unkowns of the 3x3 homography matrix (with one entry being 1). I select many correspondance points to order to
+            have an over-determined system of equations so that my solution is more robust and accurate.
+            This system allows us to recover the homography matrix which allows warping between images.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -128,7 +129,7 @@
             interpolation using scipy's map_coordinates to create the stiched mosaics. As a sanity check, I took pictures of posters that were at an angle
         in Haas Pavilion and then used the Warping to see if I can warp the poster onto a flat plane. This was done by setting 
         the correspondances of the first image to be the corners of the poster and the correspondances of the
-            second image to be rectangular coordinates of the form: [0, 0; 0, d; d, d; d, 0].</p>
+            flat plane to be rectangular coordinates of the form: [0, 0; 0, d; d, d; d, 0].</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -155,7 +156,7 @@
     <!-- Part 4: Blending Images into a Mosaic -->
     <div class="section-title">Part 4: Blending Images into a Mosaic</div>
     <div class="description">
-        <p>In this section, I blended warped images into a mosaic using cv2.distanceTransform in order to blend
+        <p>In this section, I blended warped images into a mosaic using cv2.distanceTransform and utilizing Euclidan Distance in order to blend
             the colors on the edge of the stiched mosaics. Three examples of mosaics created from different image sets are shown below.</p>
     </div>
     <div class="image-grid">

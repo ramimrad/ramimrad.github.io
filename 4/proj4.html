@@ -207,23 +207,15 @@
     <!-- Part 5: Automatic Image Stitching System -->
     <div class="section-title">Part 5: Automatic Image Stitching System</div>
     <div class="description">
-        <p>The goal of this project is to create a system for automatically stitching images into a mosaic. 
-            A secondary goal is to learn how to read and implement a research paper. 
-            The project consists of the following steps:</p>
-    </div>
-
-    <!-- Steps 1-3 -->
-    <div class="section-subtitle">Steps 1-3: Feature Detection and Matching</div>
-    <div class="description">
-        <p>For steps 1-3, we followed the paper “Multi-Image Matching using Multi-Scale Oriented Patches” by Brown et al. 
-            with several simplifications. The implementation process is outlined below:</p>
+        <p>The goal of the rest of this project is to create a system for automatically stitching images into a mosaic. 
+            This was done by implementing corner detection, feature extraction, and feature matching algorithms.</p>
     </div>
 
     <!-- Step 1: Detecting Corner Features -->
     <div class="section-title">Step 1: Detecting Corner Features</div>
     <div class="description">
-        <p>We started with the Harris Interest Point Detector (Section 2). We used a single scale and did not 
-            implement sub-pixel accuracy. Below is an example of the Harris corners overlaid on the image.</p>
+        <p>I started with the Harris Interest Point Detector which finds "corners" in the image. There were some simplifications in place
+            such as using a single scale without sub-pixel accuracy. Below is an example of the Harris corners overlaid on the image.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -235,8 +227,10 @@
     <!-- Step 2: Adaptive Non-Maximal Suppression -->
     <div class="section-title">Step 2: Adaptive Non-Maximal Suppression</div>
     <div class="description">
-        <p>Next, we implemented Adaptive Non-Maximal Suppression (Section 3) to select a refined set of corner points. 
-            This step ensures that the selected corners are well-distributed and prominent. Below is a figure showing the chosen corners overlaid on the image.</p>
+        <p>Next, I implemented Adaptive Non-Maximal Suppression (ANMS) to select a refined set of corner points. 
+            This step ensures that the selected corners are well-distributed and prominent, allowing for feature matching
+            to be more robust and accurate. This was done by using a k-d tree to find a set of neighboring points and 
+            removing points around a corner if the strength of the corner was more prominent.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -248,9 +242,9 @@
     <!-- Step 3: Feature Descriptor Extraction -->
     <div class="section-title">Step 3: Feature Descriptor Extraction</div>
     <div class="description">
-        <p>We extracted feature descriptors by capturing axis-aligned 8x8 patches from a larger 40x40 window around each 
+        <p>Next, I extracted feature descriptors by capturing axis-aligned 8x8 patches from a larger 40x40 window around each 
             feature point. These descriptors were bias and gain-normalized to ensure consistency. 
-            Below is an example of extracted feature descriptors.</p>
+            Below is an example of a extracted feature descriptor.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -262,9 +256,11 @@
     <!-- Step 4: Feature Matching -->
     <div class="section-title">Step 4: Feature Matching</div>
     <div class="description">
-        <p>For feature matching, we identified pairs of features that are similar based on their descriptors. 
-            We employed Lowe's ratio test to filter matches by comparing the ratio between the first and second 
-            nearest neighbors, as illustrated in Figure 6b of the paper. This approach helps in selecting reliable matches.</p>
+        <p>For feature matching, I identified pairs of features that are similar based on their descriptors. I utilized 2 k-d trees
+            and found the best matching descriptor in the second image for each feature in the first image of the mosaic. I also
+            cross-checked the features to ensure that the choose descriptor was the best match in either direction to increase 
+            robustness. Furthermore, I employed Lowe's ratio test to filter matches by comparing the ratio between the first and second 
+            nearest neighbors. This approach helps in selecting reliable matches.</p>
     </div>
     <div class="image-grid">
         <div class="large-image-item">
@@ -276,7 +272,12 @@
     <!-- Step 5: RANSAC for Homography -->
     <div class="section-title">Step 5: RANSAC for Homography</div>
     <div class="description">
-        <p>Using the matched feature points, we applied 4-point RANSAC to compute a robust homography estimate. This method helps in mitigating the effect of outliers and ensures an accurate transformation matrix for image warping. Below is an example of the homography computation using RANSAC.</p>
+        <p>Using the matched feature points, I applied 4-point RANSAC to compute a robust homography estimate. I randomly select
+            4 pairs of points across the two images being used to create the mosaic and compute the exact homography matrix. The
+            homography which produces the most correct matches is the one that is then used to create the mosaic itself. This is done
+            to mitigate the effects of the remaining incorrect pairs of correspondence points from the previous step which can drastically
+            affect the quality of the final mosaic. Thus, RANSAC reduces the effect of outliers and ensures an accurate transformation matrix 
+            for the final image warping step.</p>
     </div>
     <div class="image-grid">
         <div class="large-image-item">
@@ -288,7 +289,8 @@
     <!-- Step 6: Producing the Mosaic -->
     <div class="section-title">Step 6: Producing the Mosaic</div>
     <div class="description">
-        <p>Finally, we proceeded to produce the mosaic as described in Part 1, utilizing both manually and automatically stitched results side by side. Below are three examples of the mosaics created using our automated system.</p>
+        <p>Finally, I produced the mosaics using this automatic stitching. 
+            Below are three examples of the mosaics created using the manual and automatic algorithms.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
@@ -326,10 +328,11 @@
     <!-- Part 7: What Have You Learned? -->
     <div class="section-title">Part 7: What Have You Learned?</div>
     <div class="description">
-        <p>The coolest thing I learned from this project was the intricate process of feature matching and 
+        <p>The main thing I learned from this project was the intricate process of feature matching and 
             how robust algorithms like RANSAC can effectively handle outliers to compute accurate homographies. 
-            Understanding the mathematical foundations behind image warping and blending has 
-            significantly deepened my appreciation for computer vision techniques.</p>
+            Seeing the mosaics being created automatically after having to do them manually was cool to see 
+        and exciting as it significally reduces the time required to create mosaics. It was cool seeing the effect each
+        algorithm played in reducing outliers and ensuring that the mosaics create in the end were of high quality and robust.</p>
     </div>
 
 </body>

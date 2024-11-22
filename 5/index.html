@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 5: Exploring Diffusion Models</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%; 
+        }
+        .large-image-item {
+            text-align: center;
+            width: 90%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            color: #333;
+            text-align: center;
+        }
+        .centered-image {
+            text-align: center;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project 5: Exploring Diffusion Models</h1>
+
+    <!-- Part 0: Setup -->
+    <div class="section-title">Part 0: Setup</div>
+    <div class="description">
+        <p>This section introduces the DeepFloyd IF diffusion models used for generating images. The models include a stage 1 U-Net for 64x64 images and a stage 2 U-Net for upscaling to 256x256. Below are results of generated images using different iterations.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/dfloyd_20.png" alt="DeepFloyd 20 Iterations">
+            <p class="caption">DeepFloyd (20 Iterations)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/man_hat_40.png" alt="Man Wearing Hat 40 Iterations">
+            <p class="caption">Man Wearing Hat (40 Iterations)</p>
+        </div>
+    </div>
+
+    <!-- Part 1: Sampling Loops -->
+    <div class="section-title">Part 1: Sampling Loops</div>
+
+    <!-- Part 1.1 -->
+    <div class="section-title">Part 1.1: Implementing the Forward Process</div>
+    <div class="description">
+        <p>Noise was progressively added to a test image at different timesteps. The results below illustrate the effect of increasing noise levels.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/campanile_250.png" alt="Campanile at t=250">
+            <p class="caption">Noised Image (t=250)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/campanile_500.png" alt="Campanile at t=500">
+            <p class="caption">Noised Image (t=500)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/campanile_750.png" alt="Campanile at t=750">
+            <p class="caption">Noised Image (t=750)</p>
+        </div>
+    </div>
+
+    <!-- Part 1.2 -->
+    <div class="section-title">Part 1.2: Classical Denoising</div>
+    <div class="description">
+        <p>Gaussian blurring was applied to denoise the images. The results show limitations in classical approaches to denoising.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/gaussian_250.png" alt="Gaussian Blurring (t=250)">
+            <p class="caption">Gaussian Blurring (t=250)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/gaussian_500.png" alt="Gaussian Blurring (t=500)">
+            <p class="caption">Gaussian Blurring (t=500)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/gaussian_750.png" alt="Gaussian Blurring (t=750)">
+            <p class="caption">Gaussian Blurring (t=750)</p>
+        </div>
+    </div>
+
+    <!-- Part 1.3 -->
+    <div class="section-title">Part 1.3: Implementing One-Step Denoising</div>
+    <div class="description">
+        <p>A pre-trained U-Net was used for one-step denoising. Here are the results for different timesteps.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/onestep_250.png" alt="One-Step Denoising (t=250)">
+            <p class="caption">One-Step Denoising (t=250)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/onestep_500.png" alt="One-Step Denoising (t=500)">
+            <p class="caption">One-Step Denoising (t=500)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/onestep_750.png" alt="One-Step Denoising (t=750)">
+            <p class="caption">One-Step Denoising (t=750)</p>
+        </div>
+    </div>
+
+    <!-- Part 1.4 -->
+    <div class="section-title">Part 1.4: Implementing Iterative Denoising</div>
+    <div class="description">
+        <p>Using iterative denoising, we improved results over one-step denoising by gradually reducing noise.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/iterative_5.png" alt="Iterative Denoising (5th loop)">
+            <p class="caption">Iterative Denoising (5th Loop)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/iterative_15.png" alt="Iterative Denoising (15th loop)">
+            <p class="caption">Iterative Denoising (15th Loop)</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/iterative_final.png" alt="Iterative Denoising Final">
+            <p class="caption">Final Iterative Denoising</p>
+        </div>
+    </div>
+
+    <!-- Part 1.5 -->
+    <div class="section-title">Part 1.5: Diffusion Model Sampling</div>
+    <div class="description">
+        <p>Images were generated from pure random noise using iterative denoising. Here are the sampled results.</p>
+    </div>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/sample1.png" alt="Sample 1">
+            <p class="caption">Sample 1</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/sample2.png" alt="Sample 2">
+            <p class="caption">Sample 2</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/sample3.png" alt="Sample 3">
+            <p class="caption">Sample 3</p>
+        </div>
+    </div>
+
+
+    <!-- Part B -->
+    <div class="section-title">Part B: Diffusion Models from Scratch</div>
+    <div class="description">
+        <p>We implemented and trained a diffusion model from scratch using the MNIST dataset. This involved building and training a UNet for iterative denoising, exploring time-conditioning, and class-conditioning.</p>
+    </div>
+    
+    <!-- Training Loss Curve -->
+    <div class="section-title">Part 1: Training a Single-Step Denoising UNet</div>
+    <div class="description">
+        <p>In this part, I train a U-Net to denoise noisy MNIST images. To accomplish this, I add noise to the digits. Then,
+        I train the U-Net on noisy and original image pairs in order for the net to learn how to denoise the iamges. For training,
+        I set the noisy level to sigma=0.5. After training, I tested the performance on out of distribution images, meaning images
+        with noise level other than sigma=0.5. </p>
+    </div>
+    
+  
+    <div class="image-item">
+            <img src="./media/noisy_ex.png" alt="Noisy image examples">
+            <p class="caption">Example of noisy images from MNIST</p>
+    </div>
+    <div class="image-item">
+            <img src="./media/epoch_1.png" alt="Noisy image examples">
+            <p class="caption">Unconditional U-Net after 1 Epoch</p>
+    </div>
+    <div class="image-item">
+            <img src="./media/epoch_5.png" alt="Noisy image examples">
+            <p class="caption">Unconditional U-Net after 5 Epochs</p>
+    </div>
+
+    <div class="image-item">
+            <img src="./media/loss1.png" alt="Noisy image examples">
+            <p class="caption">Unconditional U-Net Loss Curve</p>
+    </div>
+
+    <div class="image-item">
+            <img src="./media/OFD.png" alt="Noisy image examples">
+            <p class="caption">Unconditional U-Net Out of Distribution Testing</p>
+    </div>
+
+    <!-- Class Conditioning -->
+    <div class="section-title">Part 2: Training a Diffusion Model</div>
+    <div class="description">
+        <p>In this part, I make the U-Net predict the noise of an image instead of performing the denoising itself. 
+          This is done since iterative denoising works better than one-step denoising. 
+          To do this I add conditioning on the timestep of the diffusion process to the U-Net.
+      Now the training workflow involves noising each image with a random timestep value 
+          from 0 to 299, passing it through the U-Net to get the predicted noise, 
+          and then calculating the loss between the predicted noise and actual noise added.
+      To sample from the model, I utilize the iterative denoising algorithm where I start from an image of 
+          pure noise, and then iteratively move towards the clean image.</p>
+    </div>
+
+    <div class="image-item">
+            <img src="./media/epoch_5_2.png" alt="Noisy image examples">
+            <p class="caption">Time-Conditional U-Net after 5 Epochs</p>
+    </div>
+    <div class="image-item">
+            <img src="./media/epoch_20_2.png" alt="Noisy image examples">
+            <p class="caption">Time-Conditional U-Net after 20 Epochs</p>
+    </div>
+
+    <div class="image-item">
+            <img src="./media/loss2.png" alt="Noisy image examples">
+            <p class="caption">Time-Conditional U-Net Loss Curve</p>
+    </div>
+
+    <div class="description">
+        <p> In this section, I add class-conditioning to the U-Net in order to improve the quality of the generated images.
+          I now utilize the MNIST training data labels as a one-hot encoded vector and feed it as input into the U-Net as well to
+          achieve class-conditioning. To sample, I pass in the one-hot encoded vector corresponding to the digit I want to generate.</p>
+    </div>
+
+    <div class="image-item">
+            <img src="./media/loss3.png" alt="Noisy image examples">
+            <p class="caption">Class-Conditional U-Net Loss Curve</p>
+    </div>
+    <div class="image-item">
+            <img src="./media/epoch_5_2.png" alt="Noisy image examples">
+            <p class="caption">Sampling results for the time-conditioned UNet for 5 epochs.</p>
+    </div>
+    <div class="image-item">
+            <img src="./media/epoch_20_2.png" alt="Noisy image examples">
+            <p class="caption">Sampling results for the time-conditioned UNet for 20 epochs.</p>
+    </div>
+  
+</body>
+</html>

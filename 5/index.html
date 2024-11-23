@@ -59,17 +59,18 @@
     <!-- Part 0: Setup -->
     <div class="section-title">Part 0: Setup</div>
     <div class="description">
-        <p>This section introduces the DeepFloyd IF diffusion models used for generating images. The models include a stage 1 U-Net for 64x64 images and a stage 2 U-Net for upscaling to 256x256. Below are results of generated images using different iterations.</p>
+        <p>This section introduces the DeepFloyd IF diffusion models used for generating images. 
+            The models include a stage 1 U-Net for 64x64 images and a stage 2 U-Net for upscaling to 256x256. 
+            Below are results of generated images using different iterations.</p>
     </div>
-    <div class="image-grid">
-        <div class="image-item">
-            <img src="./media/dfloyd_20.png" alt="DeepFloyd 20 Iterations">
-            <p class="caption">DeepFloyd (20 Iterations)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/man_hat_40.png" alt="Man Wearing Hat 40 Iterations">
-            <p class="caption">Man Wearing Hat (40 Iterations)</p>
-        </div>
+    
+    <div class="image-item">
+        <img src="./media/section0.png" alt="Output images after 20 iterations">
+        <p class="caption">Output images after 20 iterations</p>
+    </div>
+    <div class="image-item">
+        <img src="./media/section0_1.png" alt="Man Wearing Hat 40 Iterations">
+        <p class="caption">Man Wearing Hat 40 Iterations</p>
     </div>
 
     <!-- Part 1: Sampling Loops -->
@@ -78,19 +79,20 @@
     <!-- Part 1.1 -->
     <div class="section-title">Part 1.1: Implementing the Forward Process</div>
     <div class="description">
-        <p>Noise was progressively added to a test image at different timesteps. The results below illustrate the effect of increasing noise levels.</p>
+        <p>In this section, I progressively added noise to a test image at different timesteps. 
+            The results below illustrate the effect of increasing noise levels.</p>
     </div>
     <div class="image-grid">
         <div class="image-item">
-            <img src="./media/campanile_250.png" alt="Campanile at t=250">
+            <img src="./media/noise_250.png" alt="Campanile at t=250">
             <p class="caption">Noised Image (t=250)</p>
         </div>
         <div class="image-item">
-            <img src="./media/campanile_500.png" alt="Campanile at t=500">
+            <img src="./media/noise_500.png" alt="Campanile at t=500">
             <p class="caption">Noised Image (t=500)</p>
         </div>
         <div class="image-item">
-            <img src="./media/campanile_750.png" alt="Campanile at t=750">
+            <img src="./media/noise_750.png" alt="Campanile at t=750">
             <p class="caption">Noised Image (t=750)</p>
         </div>
     </div>
@@ -98,83 +100,188 @@
     <!-- Part 1.2 -->
     <div class="section-title">Part 1.2: Classical Denoising</div>
     <div class="description">
-        <p>Gaussian blurring was applied to denoise the images. The results show limitations in classical approaches to denoising.</p>
+        <p>Gaussian blurring was applied to denoise the images. 
+            The results show limitations in classical approaches to denoising.</p>
     </div>
-    <div class="image-grid">
-        <div class="image-item">
-            <img src="./media/gaussian_250.png" alt="Gaussian Blurring (t=250)">
-            <p class="caption">Gaussian Blurring (t=250)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/gaussian_500.png" alt="Gaussian Blurring (t=500)">
-            <p class="caption">Gaussian Blurring (t=500)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/gaussian_750.png" alt="Gaussian Blurring (t=750)">
-            <p class="caption">Gaussian Blurring (t=750)</p>
-        </div>
+   
+    <div class="image-item">
+        <img src="./media/section1_2.png" alt="Gaussian Blurring (t=750)">
+        <p class="caption">Gaussian Blurring at various noise levels.</p>
     </div>
+    
 
     <!-- Part 1.3 -->
     <div class="section-title">Part 1.3: Implementing One-Step Denoising</div>
     <div class="description">
         <p>A pre-trained U-Net was used for one-step denoising. Here are the results for different timesteps.</p>
     </div>
-    <div class="image-grid">
-        <div class="image-item">
-            <img src="./media/onestep_250.png" alt="One-Step Denoising (t=250)">
-            <p class="caption">One-Step Denoising (t=250)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/onestep_500.png" alt="One-Step Denoising (t=500)">
-            <p class="caption">One-Step Denoising (t=500)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/onestep_750.png" alt="One-Step Denoising (t=750)">
-            <p class="caption">One-Step Denoising (t=750)</p>
-        </div>
+    
+     <div class="image-item">
+            <img src="./media/section1_3.png" alt="One-Step Denoising (t=250)">
+            <p class="caption">One-Step Denoising at various noise levels</p>
     </div>
+        
 
     <!-- Part 1.4 -->
     <div class="section-title">Part 1.4: Implementing Iterative Denoising</div>
     <div class="description">
-        <p>Using iterative denoising, we improved results over one-step denoising by gradually reducing noise.</p>
+        <p>Using iterative denoising, I improved results over one-step denoising by gradually reducing noise.</p>
     </div>
-    <div class="image-grid">
-        <div class="image-item">
-            <img src="./media/iterative_5.png" alt="Iterative Denoising (5th loop)">
-            <p class="caption">Iterative Denoising (5th Loop)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/iterative_15.png" alt="Iterative Denoising (15th loop)">
-            <p class="caption">Iterative Denoising (15th Loop)</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/iterative_final.png" alt="Iterative Denoising Final">
-            <p class="caption">Final Iterative Denoising</p>
-        </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_4.png" alt="Iterative Denoising (5th loop)">
+        <p class="caption">Iterative Denoising compared to other methods</p>
     </div>
-
+    <div class="image-item">
+        <img src="./media/section1_4_2.png" alt="Iterative Denoising (15th loop)">
+        <p class="caption">Iterative Denoising outputs at various timesteps</p>
+    </div>
+        
     <!-- Part 1.5 -->
     <div class="section-title">Part 1.5: Diffusion Model Sampling</div>
     <div class="description">
         <p>Images were generated from pure random noise using iterative denoising. Here are the sampled results.</p>
     </div>
+
+    <div class="image-item">
+        <img src="./media/section1_5.png" alt="Sample 1">
+        <p class="caption">Sample images from Diffusion Model</p>
+    </div>
+
+        <!-- Part 1.6 -->
+    <div class="section-title">Part 1.6: Classifier Free Guidance</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_6.png" alt="Sample 1">
+        <p class="caption">Sample images using classifer free guidance with gamma=7</p>
+    </div>
+
+        <!-- Part 1.7 -->
+    <div class="section-title">Part 1.7: Image-to-image Translation</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_5.png" alt="Sample 1">
+        <p class="caption">Sample images from Diffusion Model</p>
+    </div>
+
+        <!-- Part 1.7.1 -->
+    <div class="section-title">Part 1.7.1: Editing Hand-Drawn and Web Images</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_1_1.png" alt="Sample 1">
+        <p class="caption">Image of monkey from the web.</p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_1_2.png" alt="Sample 1">
+        <p class="caption">Hand drawn image of a character.</p>
+    </div>
+
     <div class="image-grid">
         <div class="image-item">
-            <img src="./media/sample1.png" alt="Sample 1">
-            <p class="caption">Sample 1</p>
+            <img src="./media/section1_7_1_3.png" alt="Sample 1">
+            <p class="caption">Hand drawn image of a banana.</p>
         </div>
         <div class="image-item">
-            <img src="./media/sample2.png" alt="Sample 2">
-            <p class="caption">Sample 2</p>
-        </div>
-        <div class="image-item">
-            <img src="./media/sample3.png" alt="Sample 3">
-            <p class="caption">Sample 3</p>
+            <img src="./media/section1_7_1_31.png" alt="Sample 1">
+            <p class="caption">Image of a banana through the model.</p>
         </div>
     </div>
 
+            <!-- Part 1.7 -->
+    <div class="section-title">Part 1.7.2: InPainting</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_2_1.png" alt="Sample 1">
+        <p class="caption">Campanile Inpainting results.</p>
+    </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_7_2_2.png" alt="Sample 1">
+        <p class="caption">Eiffel Tower Inpainting results.</p>
+    </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_7_2_3.png" alt="Sample 1">
+        <p class="caption">Leaning Tower of Pisa Inpainting results.</p>
+    </div>
+
+            <!-- Part 1.7 -->
+    <div class="section-title">Part 1.7.3: Text-Conditioned Image-to-image Translation</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_3_1.png" alt="Sample 1">
+        <p class="caption">Campanile with a rocket ship prompt.</p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_3_2.png" alt="Sample 1">
+        <p class="caption">Eiffel Tower with a pencil prompt.</p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_7_3_3.png" alt="Sample 1">
+        <p class="caption">Leaning Tower of Pisa with a pencil prompt.</p>
+    </div>
+
+            <!-- Part 1.7 -->
+    <div class="section-title">Part 1.8: Visual Anagrams</div>
+    <div class="description">
+        <p></p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_8_1.png" alt="Sample 1">
+        <p class="caption">People Around Fire and Oil Painting of Old Man.</p>
+    </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_8_2.png" alt="Sample 1">
+        <p class="caption">An oil painting of a snowy mountain village and a photo of the amalfi cost</p>
+    </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_8_3.png" alt="Sample 1">
+        <p class="caption">A photo of a dog and A man wearing a hat</p>
+    </div>
+
+
+    <!-- Part 1.10 -->
+    <div class="section-title">Part 1.10: Hybrid Imagesg</div>
+    <div class="description">
+        <p>I created anagrams </p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_10_1.png" alt="Sample 1">
+        <p class="caption">An image of a skull (far), waterfalls (close). </p>
+    </div>
+    
+    <div class="image-item">
+        <img src="./media/section1_10_2.png" alt="Sample 1">
+        <p class="caption">An image of a rocketship (far), amalfi coast (close)</p>
+    </div>
+
+    <div class="image-item">
+        <img src="./media/section1_10_3.png" alt="Sample 1">
+        <p class="caption">An image of snowy mountain village (far), amalfi coast (close)</p>
+    </div>
+        
 
     <!-- Part B -->
     <div class="section-title">Part B: Diffusion Models from Scratch</div>

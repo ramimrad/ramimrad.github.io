@@ -378,9 +378,21 @@
           from 0 to 299, passing it through the U-Net to get the predicted noise, 
           and then calculating the loss between the predicted noise and actual noise added.
       To sample from the model, I utilize the iterative denoising algorithm where I start from an image of 
-          pure noise, and then iteratively move towards the clean image.</p>
+          pure noise, and then iteratively move towards the clean image. The pseudocode for the training and sampling algorithms along 
+        with training results is shown below.</p>
     </div>
 
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/alg_11.png" alt="Sample 1">
+            <p class="caption">Training algorithm for time conditioned UNet</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/alg_12.png" alt="Sample 1">
+            <p class="caption">Sampling algorithm for time conditioned UNet</p>
+        </div>
+    </div>
+    
     <div class="image-item">
             <img src="./media/epoch_5_2.png" alt="Noisy image examples">
             <p class="caption">Time-Conditional U-Net after 5 Epochs</p>
@@ -399,7 +411,19 @@
     <div class="description">
         <p> In this section, I add class-conditioning to the U-Net in order to improve the quality of the generated images.
           I now utilize the MNIST training data labels as a one-hot encoded vector and feed it as input into the U-Net as well to
-          achieve class-conditioning. To sample, I pass in the one-hot encoded vector corresponding to the digit I want to generate.</p>
+          achieve class-conditioning. To sample, I pass in the one-hot encoded vector corresponding to the digit I want to generate. 
+        Psuedocode for the training and sampling algorithms for the class conditioned model is shown people along with training results.</p>
+    </div>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/alg_21.png" alt="Sample 1">
+            <p class="caption">Training algorithm for class conditioned UNet</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/alg_22.png" alt="Sample 1">
+            <p class="caption">Sampling algorithm for class conditioned UNet</p>
+        </div>
     </div>
 
     <div class="image-item">

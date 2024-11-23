@@ -79,7 +79,8 @@
     <!-- Part 1.1 -->
     <div class="section-title">Part 1.1: Implementing the Forward Process</div>
     <div class="description">
-        <p>In this section, I progressively added noise to a test image at different timesteps. 
+        <p>In this section, I progressively added noise to a test image at different timesteps. I did this by implementing a forward 
+            pass with the formula x_t = sqrt(a_bar_t) * 𝑥0 + sqrt(1−a_bar_t) * e, where e ~ N(0,1)
             The results below illustrate the effect of increasing noise levels.</p>
     </div>
     <div class="image-grid">
@@ -100,8 +101,8 @@
     <!-- Part 1.2 -->
     <div class="section-title">Part 1.2: Classical Denoising</div>
     <div class="description">
-        <p>Gaussian blurring was applied to denoise the images. 
-            The results show limitations in classical approaches to denoising.</p>
+        <p>In this section, I attempt to denoise the images using Gaussian blurring on various noise levels. 
+            The results below show the limitations of this approach to denoising.</p>
     </div>
    
     <div class="image-item">
@@ -113,7 +114,9 @@
     <!-- Part 1.3 -->
     <div class="section-title">Part 1.3: Implementing One-Step Denoising</div>
     <div class="description">
-        <p>A pre-trained U-Net was used for one-step denoising. Here are the results for different timesteps.</p>
+        <p>In this section, a pre-trained U-Net was used for one-step denoising. I estimate the noise in the noisy image
+            by passing it through stage_1.unet and then remove the noise from the noisy image to obtain an estimate of the original image.
+            Here are the results for different levels of noise.</p>
     </div>
     
      <div class="image-item">
@@ -125,7 +128,8 @@
     <!-- Part 1.4 -->
     <div class="section-title">Part 1.4: Implementing Iterative Denoising</div>
     <div class="description">
-        <p>Using iterative denoising, I improved results over one-step denoising by gradually reducing noise.</p>
+        <p>In this section, I implemented iterative denoising in which I use stridded timesteps to iterative denoise the image gradually.
+            This has improved results over one-step denoising by gradually reducing noise over time.</p>
     </div>
     
     <div class="image-item">
@@ -140,7 +144,8 @@
     <!-- Part 1.5 -->
     <div class="section-title">Part 1.5: Diffusion Model Sampling</div>
     <div class="description">
-        <p>Images were generated from pure random noise using iterative denoising. Here are the sampled results.</p>
+        <p>In this section, images were generated from pure random noise using iterative denoising by starting with a completely noisy image
+            and then gradually removing the noise to generate a sampled image. Here are the sampled results.</p>
     </div>
 
     <div class="image-item">
@@ -151,9 +156,11 @@
         <!-- Part 1.6 -->
     <div class="section-title">Part 1.6: Classifier Free Guidance</div>
     <div class="description">
-        <p>This section explores Classifier Free Guidance, where images are generated using a combination of 
-            conditional and unconditional sampling. By varying the guidance weight (gamma), 
-            we can control the balance between diversity and accuracy in generated images.</p>
+        <p>In this section, I implement Classifier Free Guidance, where images are generated using a combination of 
+            conditional and unconditional sampling. To get an unconditional noise estimate, 
+            I pass an empty prompt embedding to the diffusion model and pass in 'a high quality photo' 
+            for the prompt embedding. By setting the guidance weight (gamma) to 7, 
+            I can generate higher quality images.</p>
     </div>
 
     <div class="image-item">
@@ -164,9 +171,9 @@
         <!-- Part 1.7 -->
     <div class="section-title">Part 1.7: Image-to-image Translation</div>
     <div class="description">
-        <p>Image-to-image translation using diffusion models involves modifying an input image by conditioning 
-            it with a text prompt. The following results showcase how the model translates 
-            given images based on the specified text conditions.</p>
+        <p>In this section, I implemented Image-to-image translation. To do so I take an original image, 
+            add noise to it, and then force it back onto the image manifold without any conditioning. 
+            This generates an image that is similar to the test image.</p>
     </div>
 
     <div class="image-item">
@@ -181,7 +188,7 @@
         <!-- Part 1.7.1 -->
     <div class="section-title">Part 1.7.1: Editing Hand-Drawn and Web Images</div>
     <div class="description">
-        <p>This section explores editing hand-drawn and web-sourced images using diffusion models. 
+        <p>This section explores editing hand-drawn and web-sourced images. 
             The process involves feeding these nonrealistic images into the model to attempt to bring them into the
         natural image manifold.</p>
     </div>
@@ -233,8 +240,8 @@
             <!-- Part 1.7 -->
     <div class="section-title">Part 1.7.3: Text-Conditioned Image-to-image Translation</div>
     <div class="description">
-        <p>In this section, I implemented Text-conditioned image-to-image translation combines the 
-            original image with a text prompt to guide the diffusion process. 
+        <p>In this section, I implemented Text-conditioned image-to-image translation which combines the 
+            original image with a text prompt to guide the diffusion process in order to incorporate control through language. 
             The results below demonstrate transformations applied to landmarks based on specific text descriptions.</p>
     </div>
 
@@ -263,19 +270,37 @@
             performing a reverse diffusion step to create the anagram.</p>
     </div>
 
-    <div class="image-item">
-        <img src="./media/section1_8_1.png" alt="Sample 1">
-        <p class="caption">People Around Fire and Oil Painting of Old Man.</p>
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/section1_8_1.png" alt="Sample 1">
+            <p class="caption">People Around Fire and Oil Painting of Old Man.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/ana1.png" alt="Sample 1">
+            <p class="caption">People Around Fire and Oil Painting of Old Man.</p>
+        </div>
     </div>
-    
-    <div class="image-item">
-        <img src="./media/section1_8_2.png" alt="Sample 1">
-        <p class="caption">An oil painting of a snowy mountain village and a photo of the amalfi cost</p>
+        
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/section1_8_2.png" alt="Sample 1">
+            <p class="caption">An oil painting of a snowy mountain village and a photo of the amalfi cost</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/ana2.png" alt="Sample 1">
+            <p class="caption">An oil painting of a snowy mountain village and a photo of the amalfi cost</p>
+        </div>
     </div>
-    
-    <div class="image-item">
-        <img src="./media/section1_8_3.png" alt="Sample 1">
-        <p class="caption">A photo of a dog and A man wearing a hat</p>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/section1_8_3.png" alt="Sample 1">
+            <p class="caption">A photo of a dog and A man wearing a hat</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/ana3.png" alt="Sample 1">
+            <p class="caption">A photo of a dog and A man wearing a hat</p>
+        </div>
     </div>
 
 
@@ -283,7 +308,8 @@
     <div class="section-title">Part 1.10: Hybrid Imagesg</div>
     <div class="description">
         <p>I created hybrid images by estimating the noise with two different text prompts, 
-            and then combining low frequencies from one noise estimate with high frequencies of the other noise estimate.</p>
+            and then combining low frequencies from one noise estimate with high frequencies of the other noise estimate.
+        This generates a hybird image that looks different based on the distance it is viewed from.</p>
     </div>
 
     <div class="image-item">
@@ -305,7 +331,8 @@
     <!-- Part B -->
     <div class="section-title">Part B: Diffusion Models from Scratch</div>
     <div class="description">
-        <p>We implemented and trained a diffusion model from scratch using the MNIST dataset. This involved building and training a UNet for iterative denoising, exploring time-conditioning, and class-conditioning.</p>
+        <p>In this section, I implemented and trained a diffusion model using the MNIST dataset. 
+            This involved building and training a UNet for iterative denoising, exploring time-conditioning, and class-conditioning.</p>
     </div>
     
     <!-- Training Loss Curve -->
@@ -342,7 +369,7 @@
     </div>
 
     <!-- Class Conditioning -->
-    <div class="section-title">Part 2: Training a Diffusion Model</div>
+    <div class="section-title">Part 2: Training a Diffusion Model with Time Conditioning</div>
     <div class="description">
         <p>In this part, I make the U-Net predict the noise of an image instead of performing the denoising itself. 
           This is done since iterative denoising works better than one-step denoising. 
@@ -368,6 +395,7 @@
             <p class="caption">Time-Conditional U-Net Loss Curve</p>
     </div>
 
+    <div class="section-title">Part 2: Training a Diffusion Model with Class and Time Conditioning</div>
     <div class="description">
         <p> In this section, I add class-conditioning to the U-Net in order to improve the quality of the generated images.
           I now utilize the MNIST training data labels as a one-hot encoded vector and feed it as input into the U-Net as well to

@@ -77,24 +77,13 @@
     <p>
         This section demonstrates gradient-domain processing by reconstructing an image from its gradients and a single known pixel value. 
         The goal is to ensure the implementation is correct before applying it to more complex tasks.
-    </p>
-    <ul>
-        <li>
-            First I define objectives to match x and y gradients of the source image while anchoring one pixel's intensity.
-        </li>
-        <li>
-            I formulate the problem as a least squares optimization: <code>min ||Av - b||^2</code>, where:
-            <ul>
-                <li><strong>A:</strong> Encodes gradient and intensity constraints.</li>
-                <li><strong>v:</strong> Unknown pixel values to solve.</li>
-                <li><strong>b:</strong> Gradient differences and fixed intensity.</li>
-            </ul>
-        </li>
-        <li>
+        First I define objectives to match x and y gradients of the source image while anchoring one pixel's intensity.
+        I formulate the problem as a least squares optimization: <code>min ||Av - b||^2</code>, where:
+                <strong>A:</strong> Encodes gradient and intensity constraints.
+                <strong>v:</strong> Unknown pixel values to solve.
+                <strong>b:</strong> Gradient differences and fixed intensity.
             Then, I solve for <code>v</code> using a least squares solver and map the result to reconstruct the image.
-        </li>
-    </ul>
-</p>Below is an example of a reconstructed image compared to the original which appear the same as it was recovered correctly.</p>
+        Below is an example of a reconstructed image compared to the original which appear the same as it was recovered correctly.</p>
     </div>
 
     <div class="image-grid">
@@ -113,7 +102,20 @@
     <div class="description">
         <p>The goal of Poisson blending is to seamlessly blend a source region into a target image. 
           This is achieved by solving a set of blending constraints as a least squares optimization problem. 
-          Below are examples of successful blends and a couple of failure cases. Failure cases were mainly caused by 
+          First, I define the region in the source image and its placement in the target image and
+            align the regions.
+            Then I use a least squares optimization to ensure gradient continuity between the source and target regions and 
+            copy the solved pixel values into the target image. 
+            For each pixel \( i \) in the source region, I
+                    <code>minimize (v_i - v_j - (s_i - s_j))^2</code>
+                    where \( j \) is a neighboring pixel. This ensures the gradient between \( i \) and \( j \) 
+            in the blended region matches the source image. If a pixel \( j \) is in the target region, the constraint becomes:
+                    <code>minimize (v_i - t_j - (s_i - s_j))^2</code>
+                    where \( t_j \) is the intensity from the target image. I combine all of these constraints into a sparse matrix equation:
+            <code>A * v = b</code>
+            where \( A \) encodes the constraints, \( v \) is the vector of unknown intensities, and \( b \) contains the gradient differences and fixed intensities.    
+            For RGB images, I process each color channel separately.            
+            Below are examples of successful blends and a couple of failure cases. Failure cases were mainly caused by 
         large differences in lighting of the source and target images. </p>
     </div>
 

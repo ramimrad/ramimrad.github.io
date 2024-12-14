@@ -185,7 +185,10 @@
         <p>Objects farther from the camera remain stationary across images in the lightfield grid, 
             while closer objects shift significantly. 
             Averaging all images without shifting focuses on distant objects, 
-            while appropriate shifts focus on nearer objects. Below is a GIF of images focused at different depths.</p>
+            while appropriate shifts focus on nearer objects. 
+            If all images are averaged without applying any shifts, the resulting image will appear sharp 
+            for distant objects but blurry for closer ones. By adjusting the shifts at various scales before averaging, 
+            we can bring objects at different depths into focus. Below is a GIF of images focused at different depths.</p>
     </div>
 
     <div class="large-image-item">
@@ -205,9 +208,14 @@
     <!-- Part 2: Aperture Adjustment -->
     <div class="section-title">Part 2: Aperture Adjustment</div>
     <div class="description">
-        <p>By averaging a larger subset of lightfield images, we simulate a larger aperture, 
-            resulting in a shallower depth of field. Using fewer images simulates a smaller aperture. 
-            Below is a GIF of images captured with different simulated aperture sizes.</p>
+        <p>Combining a large set of images sampled across a grid perpendicular to the optical axis 
+            simulates the effect of a camera with a larger aperture. 
+            Conversely, using fewer images creates a result resembling a smaller aperture. 
+            By varying the selection radius for the images utilizing a L1 distance metric, 
+            I can produce results corresponding to different aperture sizes while maintaining focus
+            on the same point. By averaging a larger subset of lightfield images, we simulate a larger aperture, 
+            resulting in a shallower depth of field. Using fewer images simulates a smaller aperture.
+            Below is a GIF of images captured with different simulated aperture sizes for a fixed focus point.</p>
     </div>
 
     <div class="large-image-item">

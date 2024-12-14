@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project: Gradient Domain Fusion and Light Field Camera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .description {
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .image-item {
+            text-align: center;
+            max-width: 30%;
+        }
+        .large-image-item {
+            text-align: center;
+            width: 90%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-top: 40px;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Final Project 1: Gradient Domain Fusion</h1>
 
+    <!-- Overview -->
+    <div class="section-title">Overview</div>
+    <div class="description">
+        <p>This part explores gradient-domain processing, a technique used for applications like blending.
+          The primary focus is on "Poisson blending," a method to seamlessly blend an object or texture from a source image 
+          into a target image without visible seams. This provides an alterative to using than Gaussian and Laplacian Pyramids.</p>
+    </div>
+
+    <!-- Part 2.1: Toy Problem -->
+    <div class="section-title">Part 2.1: Toy Problem</div>
+    <div class="description">
+        <p>In this part, I solve a toy problem to reconstruct an image using its x and y gradients and a single pixel value. 
+         Below is an example of a reconstructed image compared to the original which appear the same as it was recovered correctly.</p>
+    </div>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/toy1.png" alt="Original Image">
+            <p class="caption">Original and Reconstructed Taj Image</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/toy2.png" alt="Reconstructed Image">
+            <p class="caption">Original and Reconstructed Paris Image</p>
+        </div>
+    </div>
+
+    <!-- Part 2.2: Poisson Blending -->
+    <div class="section-title">Part 2.2: Poisson Blending</div>
+    <div class="description">
+        <p>The goal of Poisson blending is to seamlessly blend a source region into a target image. 
+          This is achieved by solving a set of blending constraints as a least squares optimization problem. 
+          Below are examples of successful blends and a couple of failure cases. Failure cases were mainly caused by 
+        large differences in lighting of the source and target images. </p>
+    </div>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/ufo_blend.png" alt="ufo">
+            <p class="caption">UFO blended into the UC Berkeley Sky.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/saturn_blend1.png" alt="sat">
+            <p class="caption">Saturn blended into the New York Skyline.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/saturn_blend2.png" alt="sat2">
+            <p class="caption">Saturn blended into another New York Skyline.</p>
+        </div>
+      <div class="image-item">
+            <img src="./media/paris_blend.png" alt="paris1">
+            <p class="caption">Jupiter blended next to the Eifel Tower.</p>
+        </div>
+      
+    </div>
+        <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/ufo_mask.png" alt="1">
+            <p class="caption">Mask used for UFO blending.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/saturn_mask1.png" alt="2">
+            <p class="caption">Masked used for Saturn blending into the New York Skyline.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/saturn_mask2.png" alt="3">
+            <p class="caption">Masked used for Saturn blending into another New York Skyline.</p>
+        </div>
+      <div class="image-item">
+            <img src="./media/jupiter_mask.png" alt="4">
+            <p class="caption">Masked used for Jupiter blending next to the Eifel Tower.</p>
+        </div>
+    </div>
+
+    </div>
+        <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/newyork_fail1.png" alt="NY">
+            <p class="caption">Suboptimal results for blending a man into New York stree due to large lighting differences.</p>
+        </div>
+        <div class="image-item">
+            <img src="./media/paris_fail1.png" alt="Paris">
+            <p class="caption">Suboptimal results for blending a man onto Paris street due to lighting differences.</p>
+        </div>
+    </div>
+
+    <!-- Bells and Whistles -->
+    <div class="section-title">Bells & Whistles</div>
+
+    <!-- Mixed Gradients -->
+    <div class="section-title">Mixed Gradients</div>
+    <div class="description">
+        <p>Mixed gradients use the larger gradient magnitude from either the source or target image. 
+          This technique helps preserve stronger details from both images. Below is an example using mixed gradients for blending
+          some writing onto a wall.</p>
+    </div>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="./media/mixed_gradients.png" alt="Mixed Gradient Blending">
+            <p class="caption">Mixed Gradient Blending of text onto a wall.</p>
+        </div>
+      <div class="image-item">
+            <img src="./media/mixed_gradients_mask.png" alt="Mixed Gradient Blending">
+            <p class="caption">Mixed Gradient Blending mask of text onto a wall.</p>
+        </div>
+    </div>
+</body>
+</html>
